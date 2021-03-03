@@ -14,6 +14,13 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+func init() {
+	gob.Register(map[string]interface{}{})
+	// gob.Register(&osin.DefaultClient{})
+	gob.Register(osin.AuthorizeData{})
+	gob.Register(osin.AccessData{})
+}
+
 type Storage struct {
 	redis *redis.Pool
 	mysql *sql.DB
